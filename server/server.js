@@ -1,6 +1,8 @@
 // server.js
+const dotenv = require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const apiRouter = require('./routes/api');
 
 const app = express();
 
@@ -11,6 +13,7 @@ if (process.env.NODE_ENV === 'production') {
   app.get('/', (req, res) => res.status(200)
     .sendFile(path.join(__dirname, '../index.html')));
 }
+
 
 app.listen(port, () => {
   console.log('listening on 3000');
