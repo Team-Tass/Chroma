@@ -10,7 +10,7 @@ class MainContainer extends Component {
       ColumnContainers: [<ColumnContainer />],
     };
 
-    this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(id) {
@@ -34,7 +34,7 @@ class MainContainer extends Component {
     const { ColumnContainers } = this.state;
     return (
       <div>
-        {/* {ColumnContainers} */}
+        {ColumnContainers}
         {/* <SearchForm handleSubmit={this.handleSubmit} /> */}
         {/* <ColorComponent /> */}
       </div>
