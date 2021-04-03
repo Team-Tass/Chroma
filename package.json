@@ -4,8 +4,8 @@
   "description": "codesmith la 42 cohort scratch project; a color palette css designer tool",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=production node server/server.js",
-    "build": "NODE_ENV=production webpack",
+    "start": "cross-env process.env.NODE_ENV=production node server/server.js",
+    "build": "cross-env process.env.NODE_ENV=production webpack",
     "dev": "NODE_ENV=development webpack serve --open & nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/chris-paul-ejercito/Chroma#readme",
   "dependencies": {
+    "cross-env": "^7.0.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.12.3",
