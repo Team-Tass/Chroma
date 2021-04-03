@@ -29,6 +29,20 @@ class ColumnContainer extends Component {
         this.setState(current);
     }
 
+    // handleSave(e) {
+    // fetch('/api/', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'Application/JSON',
+    //     'Content-Type': 'Application/JSON',
+    //   },
+    //   body: JSON.stringify(this.state)
+    // })
+    //   .then((data) => {
+
+    //   });
+    // }
+
     render() {
         //colors array stores one color container for each colorCounter number
         const colors = []
@@ -43,9 +57,9 @@ class ColumnContainer extends Component {
         return (
             <div className='ColorContainer'>
                 {colors}
-                <button id='addB'onCLick={incrementer}>Add Color</button>
+                <button id='addB' onClick={this.increment}>Add Color</button>
                 <form>
-                    <input id='saveB' type='submit'>Save Palette</input>
+                    <input id='saveB' type='submit' value='Save Palette'></input>
                 </form>
             </div>
         )
