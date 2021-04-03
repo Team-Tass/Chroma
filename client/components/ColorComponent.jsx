@@ -1,0 +1,1 @@
+// ColorComponent.jsx
