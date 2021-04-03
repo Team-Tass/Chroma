@@ -1,17 +1,45 @@
 // MainContainer.jsx
-import React from 'react';
+import React, { Component } from 'react';
 import ColumnContainer from './ColumnContainer';
-import ColorComponent from '../components/ColorComponent';
 import SearchForm from '../components/SearchForm';
 
-const MainContainer = (props) => {
-  return (
-    <div>
-      {/* <ColumnContainer /> */}
-      <SearchForm />
-      {/* <ColorComponent /> */}
-    </div>
-  );
+class MainContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      ColumnContainers: [<ColumnContainer />],
+    };
+
+    this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(id) {
+    // conditionally add body to request if id is empty
+    console.log('handleSubmit', id);
+    // fetch('/api/', {
+    //   method: 'GET',
+    //   headers: {
+    //     'Content-Type': 'Application/JSON',
+    //   },
+    // })
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+    //     this.setState((prevState) => 
+    //       ({ ColumnContainers: prevState.ColumnContainers.push(<ColumnContainer />) }));
+    //   });
+  }
+
+  render() {
+    const { ColumnContainers } = this.state;
+    return (
+      <div>
+        {/* {ColumnContainers} */}
+        {/* <SearchForm handleSubmit={this.handleSubmit} /> */}
+        {/* <ColorComponent /> */}
+      </div>
+    );
+  }
 }
 
 export default MainContainer;

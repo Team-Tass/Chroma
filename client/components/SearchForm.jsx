@@ -15,6 +15,7 @@ class SearchForm extends Component {
         action=""
         onSubmit={(event) => {
           event.preventDefault();
+          this.props.handleSubmit(this.state.id);
         }}
       >
         <h2>SearchForm</h2>
