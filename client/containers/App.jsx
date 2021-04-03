@@ -1,9 +1,10 @@
 // App.jsx
 import React from 'react';
+import MainContainer from './MainContainer';
 
 const App = (props) => {
   return (
-    <h1>test</h1>
+    <MainContainer />
   );
 };
 
