@@ -8,11 +8,20 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
+/* Production build page serve */
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
   app.get('/', (req, res) => res.status(200)
     .sendFile(path.join(__dirname, '../index.html')));
 }
+
+/* Routes */
+app.use('/api', apiRouter);
+
+/* 404 Handler */
+
+
+/* Global Error Handler */
 
 
 app.listen(port, () => {
