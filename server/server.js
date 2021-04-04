@@ -15,6 +15,10 @@ if (process.env.NODE_ENV === 'production') {
     .sendFile(path.join(__dirname, '../index.html')));
 }
 
+/* Parsing and Encoding */
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 /* Routes */
 app.use('/api', apiRouter);
 
