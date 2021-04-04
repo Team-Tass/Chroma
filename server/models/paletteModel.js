@@ -14,8 +14,10 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
   
 const paletteSchema = new Schema({
+  palette: [{color: String}],
   createdAt: { type: Date, default: Date.now }
 });
+
 const Palette = mongoose.model('palettes', paletteSchema);
 
 module.exports = Palette;
