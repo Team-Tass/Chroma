@@ -1,6 +1,6 @@
 // ColorContainer.jsx
 import React, { Component } from 'react';
-import ColorComponent from '../components/colorComponent';
+import ColorComponent from '../components/ColorComponent';
 
 class ColorContainer extends Component {
     constructor(props) {
