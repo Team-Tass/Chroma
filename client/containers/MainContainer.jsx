@@ -10,32 +10,32 @@ class MainContainer extends Component {
       ColumnContainers: [<ColumnContainer />],
     };
 
-    this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(id) {
     // conditionally add body to request if id is empty
     console.log('handleSubmit', id);
-    // fetch('/api/', {
-    //   method: 'GET',
-    //   headers: {
-    //     'Content-Type': 'Application/JSON',
-    //   },
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data);
-    //     this.setState((prevState) => 
-    //       ({ ColumnContainers: prevState.ColumnContainers.push(<ColumnContainer />) }));
-    //   });
+    fetch('/api/palette/all', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'Application/JSON',
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        // this.setState((prevState) => 
+        //   ({ ColumnContainers: prevState.ColumnContainers.push(<ColumnContainer />) }));
+      });
   }
 
   render() {
     const { ColumnContainers } = this.state;
     return (
       <div>
-        {/* {ColumnContainers} */}
-        {/* <SearchForm handleSubmit={this.handleSubmit} /> */}
+        {ColumnContainers}
+        <SearchForm handleSubmit={this.handleSubmit} />
         {/* <ColorComponent /> */}
       </div>
     );
