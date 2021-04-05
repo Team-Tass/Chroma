@@ -20,7 +20,7 @@ class ColorContainer extends Component {
     render() {
         return (
             <div style = {{backgroundColor: this.state.color}} className='ColorContainer'>
-                <h1>testing</h1>
+                <h1>{this.state.color}</h1>
                 <ColorComponent
                 key={this.props.id}
                 id={this.props.id}

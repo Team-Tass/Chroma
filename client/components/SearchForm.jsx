@@ -12,6 +12,7 @@ class SearchForm extends Component {
   render() {
     return (
       <form
+        className="search-form"
         action=""
         onSubmit={(event) => {
           event.preventDefault();
