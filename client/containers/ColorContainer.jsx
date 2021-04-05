@@ -6,13 +6,15 @@ class ColorContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: '#EFEFEF'
+            color: props.color,
         }
+        console.log('this.state.color', this.state.color);
         this.colorChange = this.colorChange.bind(this);
     }
 
+    //Changes the color of the current container to correspond with when its ColorComponent's color input is changed
     colorChange(e) {
-        this.setState({color: e.target});
+        this.setState({color: e.target.value});
     }
 
     render() {
@@ -20,9 +22,13 @@ class ColorContainer extends Component {
             <div style = {{backgroundColor: this.state.color}} className='ColorContainer'>
                 <h1>testing</h1>
                 <ColorComponent
+                key={this.props.id}
+                id={this.props.id}
                 update = {this.props.update}
                 colorChange = {this.colorChange}
+                color={this.state.color}
                 />
+                <button id='deleteB' onClick={this.props.decrement}>Delete Color</button>
             </div>
         )
     }
