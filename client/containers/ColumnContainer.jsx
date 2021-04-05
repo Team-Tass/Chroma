@@ -14,7 +14,7 @@ class ColumnContainer extends Component {
             // push colors props to state
             // pass colors to props
             console.log(props.palette);
-            const newPalette = props.palette.map((color) => color.color);
+            const newPalette = props.palette.map((hex) => hex.color);
             console.log('newPalette', newPalette);
             const newCounter = newPalette.length;
             console.log('newCounter', newCounter);
@@ -33,7 +33,8 @@ class ColumnContainer extends Component {
         // const index = e.target.id;
         console.log(index);
         const current = this.state;
-        current.palette[index] = {"color": e.target.value};
+        // current.palette[index] = {"color": e.target.value};
+        current.palette[index] = e.target.value;
         this.setState(current);
     }
     //incremeter function increments colorCounter
@@ -55,7 +56,7 @@ class ColumnContainer extends Component {
         e.preventDefault();
         const paletteBody = this.state.palette.map((hex) => {
             return {color: hex};
-        })
+        });
         fetch('/api/palette', {
         method: 'POST',
         headers: {
