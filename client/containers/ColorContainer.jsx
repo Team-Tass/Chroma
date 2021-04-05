@@ -6,8 +6,9 @@ class ColorContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: '#EFEFEF'
+            color: props.color,
         }
+        console.log('this.state.color', this.state.color);
         this.colorChange = this.colorChange.bind(this);
     }
 
@@ -24,6 +25,7 @@ class ColorContainer extends Component {
                 id={this.props.id}
                 update = {this.props.update}
                 colorChange = {this.colorChange}
+                color={this.state.color}
                 />
             </div>
         )

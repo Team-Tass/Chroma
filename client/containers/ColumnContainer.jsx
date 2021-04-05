@@ -9,6 +9,19 @@ class ColumnContainer extends Component {
         this.state = {
             palette: [],
             counter: 1,
+        };
+        if (props.palette) {
+            // push colors props to state
+            // pass colors to props
+            console.log(props.palette);
+            const newPalette = props.palette.map((color) => color.color);
+            console.log('newPalette', newPalette);
+            const newCounter = newPalette.length;
+            console.log('newCounter', newCounter);
+            this.state = {
+                palette: newPalette,
+                counter: newCounter,
+            };
         }
         this.update = this.update.bind(this);
         this.increment = this.increment.bind(this);
@@ -53,6 +66,7 @@ class ColumnContainer extends Component {
             update = {this.update}
             key = {i}
             id = {i}
+            color = {this.state.palette[i]}
             />)
         }
         //returns a div with a button that invokes incrementer function onclick and 

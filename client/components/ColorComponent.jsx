@@ -3,6 +3,7 @@ import React from 'react';
 
 const ColorComponent = (props) => {
   // const props = { props };
+  console.log('props.color', props.color);
   return (
     <div>
       <input 
