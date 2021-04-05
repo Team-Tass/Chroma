@@ -51,15 +51,18 @@ class ColumnContainer extends Component {
 
     //post request sends our current palette to the server when save button is clicked
     handleSave(e) {
-        console.log(this.state.palette)
+        console.log(this.state.palette);
         e.preventDefault();
+        const paletteBody = this.state.palette.map((hex) => {
+            return {color: hex};
+        })
         fetch('/api/palette', {
         method: 'POST',
         headers: {
             'Accept': 'Application/JSON',
             'Content-Type': 'Application/JSON',
         },
-        body: JSON.stringify({palette: this.state.palette}),
+        body: JSON.stringify({ palette: paletteBody }),
         })
         .then((data) => {
             console.log('res from server POSTing palette', data);

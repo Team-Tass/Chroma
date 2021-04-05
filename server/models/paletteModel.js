@@ -14,7 +14,8 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
   
 const paletteSchema = new Schema({
-  palette: [{color: String}],
+  /*palette: [{color: String}],*/
+  palette: Array,
   createdAt: { type: Date, default: Date.now }
 });
 

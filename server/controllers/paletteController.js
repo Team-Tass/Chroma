@@ -25,7 +25,21 @@ paletteController.getOne = (req, res, next) => {
 */
 paletteController.create = (req, res, next) => {
   console.log(`paletteController.create invoked`);
-  next();
+  console.log(req.body);
+  // const newPalette = JSON.parse(req.body.palette);
+  console.log('newPalette', req.body);
+  const palette = new Palette(req.body);
+  console.log('palette', palette);
+  palette.save()
+    .then(data => {
+      console.log(`data = ${data}`);
+      res.locals = data;
+      next();
+    })
+    .catch(err => {
+      console.log(`err = ${err}`);
+      next({err: err});
+    });
 }
 
 
