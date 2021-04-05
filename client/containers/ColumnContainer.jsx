@@ -15,11 +15,11 @@ class ColumnContainer extends Component {
     }
 
     //Updates state with current color on palette
-    update(e) {
-        const color = e.target.id;
-        console.log(color);
+    update(e, index) {
+        // const index = e.target.id;
+        console.log(index);
         const current = this.state;
-        current.palette[color] = '#EFEFEF'
+        current.palette[index] = {"color": e.target.value};
         this.setState(current);
     }
     //incremeter function increments colorCounter
@@ -31,17 +31,17 @@ class ColumnContainer extends Component {
 
     handleSave(e) {
         e.preventDefault();
-    fetch('/api/palette', {
-      method: 'POST',
-      headers: {
-        'Accept': 'Application/JSON',
-        'Content-Type': 'Application/JSON',
-      },
-      body: JSON.stringify(this.state.palette),
-    })
-      .then((data) => {
-        console.log('res from server POSTing palette', data);
-      });
+        fetch('/api/palette', {
+        method: 'POST',
+        headers: {
+            'Accept': 'Application/JSON',
+            'Content-Type': 'Application/JSON',
+        },
+        body: JSON.stringify({palette: this.state.palette}),
+        })
+        .then((data) => {
+            console.log('res from server POSTing palette', data);
+        });
     }
 
     render() {
@@ -52,6 +52,7 @@ class ColumnContainer extends Component {
             colors.push(<ColorContainer
             update = {this.update}
             key = {i}
+            id = {i}
             />)
         }
         //returns a div with a button that invokes incrementer function onclick and 

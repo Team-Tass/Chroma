@@ -5,7 +5,10 @@ const ColorComponent = (props) => {
   // const props = { props };
   return (
     <div>
-      <input type="color" onChange={() => console.log('onChange ColorComponent')}></input>
+      <input 
+        type="color" 
+        onChange={(event) => props.update(event, props.id)}>
+      </input>
     </div>
   )
 }
