@@ -20,6 +20,8 @@ class ColorContainer extends Component {
             <div style = {{backgroundColor: this.state.color}} className='ColorContainer'>
                 <h1>testing</h1>
                 <ColorComponent
+                key={this.props.id}
+                id={this.props.id}
                 update = {this.props.update}
                 colorChange = {this.colorChange}
                 />
