@@ -36,9 +36,8 @@ paletteController.getOne = (req, res, next) => {
       res.locals = data;
       next()
     }
-  })
-  */
-  next();
+  })*/
+  next()
 }
 
 /* 
