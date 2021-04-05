@@ -12,8 +12,9 @@ class ColorContainer extends Component {
         this.colorChange = this.colorChange.bind(this);
     }
 
+    //Changes the color of the current container to correspond with when its ColorComponent's color input is changed
     colorChange(e) {
-        this.setState({color: e.target});
+        this.setState({color: e.target.value});
     }
 
     render() {
@@ -27,6 +28,7 @@ class ColorContainer extends Component {
                 colorChange = {this.colorChange}
                 color={this.state.color}
                 />
+                <button id='deleteB' onClick={this.props.decrement}>Delete Color</button>
             </div>
         )
     }
