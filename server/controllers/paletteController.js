@@ -8,16 +8,36 @@ const paletteController = {};
 */
 paletteController.getAll = (req, res, next) => {
   console.log(`paletteController.getAll invoked`);
-  next();
+  const filter = {};
+  Palette.find(filter, function (err, data){
+    if(err){
+      next({err: err});
+    } else{
+      res.locals = data;
+      next()
+    }
+  })
 }
 
 
 /* 
   TODO:  paletteController.getOne  to return one palette specified by _id
 */
+
 paletteController.getOne = (req, res, next) => {
   console.log(`paletteController.getOne invoked`);
-  next();
+  /*
+  const filter = {_id: {}};
+  Palette.find(filter, function (err, data){
+    console.log(data);
+    if(err){
+      next({err: err});
+    } else{
+      res.locals = data;
+      next()
+    }
+  })*/
+  next()
 }
 
 /* 
