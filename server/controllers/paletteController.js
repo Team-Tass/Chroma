@@ -8,15 +8,36 @@ const paletteController = {};
 */
 paletteController.getAll = (req, res, next) => {
   console.log(`paletteController.getAll invoked`);
-  next();
+  const filter = {};
+  Palette.find(filter, function (err, data){
+    if(err){
+      next({err: err});
+    } else{
+      res.locals = data;
+      next()
+    }
+  })
 }
 
 
 /* 
   TODO:  paletteController.getOne  to return one palette specified by _id
 */
+
 paletteController.getOne = (req, res, next) => {
   console.log(`paletteController.getOne invoked`);
+  /*
+  const filter = {_id: {}};
+  Palette.find(filter, function (err, data){
+    console.log(data);
+    if(err){
+      next({err: err});
+    } else{
+      res.locals = data;
+      next()
+    }
+  })
+  */
   next();
 }
 
@@ -32,7 +53,7 @@ paletteController.create = (req, res, next) => {
   palette.save()
     .then(data => {
       console.log(`data = ${data}`);
-      res.locals(data);
+      res.locals = data;
       next();
     })
     .catch(err => {
