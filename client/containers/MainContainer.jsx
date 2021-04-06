@@ -3,17 +3,17 @@ import React, { Component } from 'react';
 import ColumnContainer from './ColumnContainer';
 import SearchForm from '../components/SearchForm';
 
-const defaultPalette = [
-  { color: '#002fa7' },
-  { color: '#efefef' },
-];
+// const defaultPalette = [
+//   { color: '#002fa7' },
+//   { color: '#efefef' },
+// ];
 
 class MainContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
       palettes: [
-        defaultPalette,
+        // defaultPalette,
       ],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
