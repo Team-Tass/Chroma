@@ -6,9 +6,9 @@ class ColorContainer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            color: this.props.columnState.palette[this.props.id],
-            // prePropsId: this.props.id
+            color: props.color,
         }
+        console.log('this.state.color', this.state.color);
         this.colorChange = this.colorChange.bind(this);
     }
 
@@ -30,12 +30,13 @@ class ColorContainer extends Component {
     render() {
         return (
             <div style = {{backgroundColor: this.state.color}} className='ColorContainer'>
-                <h1>testing</h1>
+                <h1>{this.state.color}</h1>
                 <ColorComponent
                 key={this.props.id}
                 id={this.props.id}
                 update = {this.props.update}
                 colorChange = {this.colorChange}
+                color={this.state.color}
                 />
                 <button id='deleteB' onClick={() => {
                     this.props.deleteColor(this.props.id);

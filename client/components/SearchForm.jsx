@@ -9,9 +9,15 @@ class SearchForm extends Component {
     };
   }
 
+  allOrOne() {
+    if (!this.state.id) return 'Get ALL Palettes';
+    return 'Get Palette by ID';
+  }
+
   render() {
     return (
       <form
+        className="search-form"
         action=""
         onSubmit={(event) => {
           event.preventDefault();
@@ -28,7 +34,9 @@ class SearchForm extends Component {
           }}
         />
         <input
-          type="submit" value="Get Palette by ID" />
+          type="submit"
+          value={this.allOrOne()}
+        />
       </form>
     )
   }

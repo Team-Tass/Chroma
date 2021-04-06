@@ -9,6 +9,19 @@ class ColumnContainer extends Component {
         this.state = {
             palette: [],
             counter: 1,
+        };
+        if (props.palette) {
+            // push colors props to state
+            // pass colors to props
+            console.log(props.palette);
+            const newPalette = props.palette.map((hex) => hex.color);
+            console.log('newPalette', newPalette);
+            const newCounter = newPalette.length;
+            console.log('newCounter', newCounter);
+            this.state = {
+                palette: newPalette,
+                counter: newCounter,
+            };
         }
         this.update = this.update.bind(this);
         this.deleteColor = this.deleteColor.bind(this);
@@ -21,7 +34,8 @@ class ColumnContainer extends Component {
         // const index = e.target.id;
         console.log(index);
         const current = this.state;
-        current.palette[index] = {"color": e.target.value};
+        // current.palette[index] = {"color": e.target.value};
+        current.palette[index] = e.target.value;
         this.setState(current);
     }
 
@@ -50,15 +64,18 @@ class ColumnContainer extends Component {
 
     //post request sends our current palette to the server when save button is clicked
     handleSave(e) {
-        console.log(this.state.palette)
+        console.log(this.state.palette);
         e.preventDefault();
+        const paletteBody = this.state.palette.map((hex) => {
+            return {color: hex};
+        });
         fetch('/api/palette', {
         method: 'POST',
         headers: {
             'Accept': 'Application/JSON',
             'Content-Type': 'Application/JSON',
         },
-        body: JSON.stringify({palette: this.state.palette}),
+        body: JSON.stringify({ palette: paletteBody }),
         })
         .then((data) => {
             console.log('res from server POSTing palette', data);
@@ -77,6 +94,7 @@ class ColumnContainer extends Component {
             columnState = {this.state}
             key = {i}
             id = {i}
+            color = {this.state.palette[i]}
             />)
         }
         //returns a div with a button that invokes incrementer function on click
