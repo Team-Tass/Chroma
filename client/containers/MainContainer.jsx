@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ColumnContainer from './ColumnContainer';
 import SearchForm from '../components/SearchForm';
 
-const palette = [
+const defaultPalette = [
   { color: '#002fa7' },
   { color: '#efefef' },
 ];
@@ -12,12 +12,8 @@ class MainContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      ColumnContainers: [
-        <ColumnContainer key={0} />,
-        <ColumnContainer
-          key={1}
-          palette={palette}
-        />,
+      palettes: [
+        defaultPalette,
       ],
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,34 +38,27 @@ class MainContainer extends Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
-        // console.log(this.state.ColumnContainers);
         // add to ColumnContainers and pass as props the colors in data
         this.setState((prevState) => {
-          console.log(prevState);
-          const { ColumnContainers } = prevState;
-          // data.forEach((palette) => {
-            //     ColumnContainers.push(
-            //       <ColumnContainer
-            //         colors={palette}
-            //         key={ColumnContainers.length + 1}
-            //       />,
-            //     );
-            //   });
+          const { palettes } = this.state;
+          data.forEach((paletteObj) => {
+            palettes.push(paletteObj.palette);
+          });
           return {
-            ColumnContainers,
+            ...prevState,
+            palettes,
           };
         });
-      });
+      })
+      .catch((err) => console.log('error occurred getting data from server', err));
   }
 
   render() {
-    const { ColumnContainers } = this.state;
+    const ColumnContainers = this.state.palettes.map((p) => <ColumnContainer palette={p} />);
     return (
       <div>
         { ColumnContainers }
         <SearchForm handleSubmit={this.handleSubmit} />
-        {/* <ColorComponent /> */}
       </div>
     );
   }
