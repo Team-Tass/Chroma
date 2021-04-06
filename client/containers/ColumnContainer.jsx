@@ -11,6 +11,7 @@ class ColumnContainer extends Component {
             counter: 1,
         }
         this.update = this.update.bind(this);
+        this.deleteColor = this.deleteColor.bind(this);
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this);
     }
@@ -22,6 +23,17 @@ class ColumnContainer extends Component {
         const current = this.state;
         current.palette[index] = {"color": e.target.value};
         this.setState(current);
+    }
+
+    updateAll() {
+
+    }
+    deleteColor(id) {
+        console.log(id);
+        const newPalette = this.state.palette;
+        newPalette.splice(id, 1);
+        console.log(newPalette);
+        this.setState({palette: newPalette});
     }
     //incremeter function increments colorCounter
     increment(e) {
@@ -61,6 +73,8 @@ class ColumnContainer extends Component {
             colors.push(<ColorContainer
             update = {this.update}
             decrement = {this.decrement}
+            deleteColor = {this.deleteColor}
+            columnState = {this.state}
             key = {i}
             id = {i}
             />)
