@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Inconsolata:wght@400;600&display=swap');
+
+body, button, input {
+    font-family: 'Inconsolata', monospace;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+body {
+    background-color: #efefef;
+}
+h1.name-of-app {
+    font-size: 60pt;
+    font-family: 'Inconsolata', monospace;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.ColumnContainer {
+    background-color: #ffffff;
+    margin: 1em auto 1em auto;
+    padding: 1em 1em 1em 1em;
+    max-width: 500px;
+    border-radius: 30px;
+}
+.ColumnContainer button {
+    margin-left: 20px;
+    display: inline;
+}
+.ColumnContainer form input {
+    margin-left: 20px;
+    display: inline;
+}
+.ColumnContainer form {
+    display: inline;
+}
+.ColorContainer{
+    border-radius: 25px;
+    margin-bottom: 1em;
+    padding: .5em;
+}
+.ColorContainer h1 {
+    /*text-shadow: 0 0 2px #ffffff;*/
+    background-color: #ffffff;
+    padding: .25em;
+    margin: 10px 10px 10px 10px;
+    width: 60px;
+    float: right;
+    font-size: 85%;
+    border-radius: 8px;
+    text-align: center;
+    text-transform: uppercase;
+}
+.ColorContainer div input {
+    margin-left: 12px;
+}
+.ColorContainer button {
+    margin-top: 4px;;
+    margin-left: 12px;
+
+}
+.search-form {
+    max-width: 500px;
+    margin: 1em auto 1em auto;
+    padding: 1em 1em 1em 1em;
+    text-transform: uppercase;
+}
