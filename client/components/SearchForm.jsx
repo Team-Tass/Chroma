@@ -1,6 +1,9 @@
-// SearchForm.jsx
 import React, { Component } from 'react';
 
+/**
+ * @param {<props>}
+ * @returns GET request params
+ */
 class SearchForm extends Component {
   constructor(props) {
     super(props);

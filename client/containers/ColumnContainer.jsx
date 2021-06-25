@@ -1,8 +1,10 @@
-// ColumnContainer.jsx
 import React, { Component } from 'react';
 import ColorContainer from './ColorContainer';
 import ColorComponent from '../components/ColorComponent';
 
+/**
+ * @returns div with a button that invokes incrementer function on click
+ */
 class ColumnContainer extends Component {
     constructor(props) {
         super(props);
@@ -29,7 +31,7 @@ class ColumnContainer extends Component {
         this.decrement = this.decrement.bind(this);
     }
 
-    //Updates state with current color on palette
+    // Updates state with current color on palette
     update(e, index) {
         // const index = e.target.id;
         console.log(index);
@@ -39,9 +41,6 @@ class ColumnContainer extends Component {
         this.setState(current);
     }
 
-    updateAll() {
-
-    }
     deleteColor(id) {
         console.log(id);
         const newPalette = this.state.palette;
@@ -49,20 +48,22 @@ class ColumnContainer extends Component {
         console.log(newPalette);
         this.setState({palette: newPalette});
     }
-    //incremeter function increments colorCounter
+
+    // incremeter function increments colorCounter
     increment(e) {
         const current = this.state;
         current.counter += 1;
         this.setState(current);
     }
-    //decerementer function decerements colorCoounter
+
+    // decerementer function decerements colorCoounter
     decrement(e) {
         const current = this.state;
         current.counter -= 1;
         this.setState(current);
     }
 
-    //post request sends our current palette to the server when save button is clicked
+    // post request sends our current palette to the server when save button is clicked
     handleSave(e) {
         console.log(this.state.palette);
         e.preventDefault();
@@ -83,9 +84,9 @@ class ColumnContainer extends Component {
     }
 
     render() {
-        //colors array stores one color container colorCounter number of times
+        // colors array stores one color container colorCounter number of times
         const colors = []
-        //for loop that iterates colorCounter number of times and pushes a new ColorContainer into colors array
+        // for loop that iterates colorCounter number of times and pushes a new ColorContainer into colors array
         for (let i=0; i < this.state.counter; i+=1) {
             colors.push(<ColorContainer
             update = {this.update}
@@ -97,7 +98,7 @@ class ColumnContainer extends Component {
             color = {this.state.palette[i]}
             />)
         }
-        //returns a div with a button that invokes incrementer function on click
+        
         return (
             <div className='ColumnContainer'>
                 {colors}

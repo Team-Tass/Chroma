@@ -1,7 +1,9 @@
-// ColorContainer.jsx
 import React, { Component } from 'react';
 import ColorComponent from '../components/ColorComponent';
 
+/**
+ * @returns ColorComponent with corresponding delete button
+ */
 class ColorContainer extends Component {
     constructor(props) {
         super(props);
@@ -12,7 +14,7 @@ class ColorContainer extends Component {
         this.colorChange = this.colorChange.bind(this);
     }
 
-    //Changes the color of the current container to correspond with when its ColorComponent's color input is changed
+    // Changes the color of the current container to correspond with when its ColorComponent's color input is changed
     colorChange(e) {
         this.setState({color: e.target.value});
     }
