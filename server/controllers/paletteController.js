@@ -1,13 +1,12 @@
-// colorController.js
 const Palette = require('../models/paletteModel');
 
 const paletteController = {};
 
-/* 
-  TODO:  paletteController.getAll  to return all palettes
-*/
+/**
+ * GET all saved palettes
+ * @returns all palettes/error
+ */
 paletteController.getAll = (req, res, next) => {
-  console.log(`paletteController.getAll invoked`);
   const filter = {};
   Palette.find(filter, function (err, data){
     if(err){
@@ -19,17 +18,14 @@ paletteController.getAll = (req, res, next) => {
   })
 }
 
-
-/* 
-  TODO:  paletteController.getOne  to return one palette specified by _id
-*/
-
+/**
+ * GET palette by _id
+ * @returns palettte._id/error
+ */
 paletteController.getOne = (req, res, next) => {
-  console.log(`paletteController.getOne invoked`);
   /*
   const filter = {_id: {}};
   Palette.find(filter, function (err, data){
-    console.log(data);
     if(err){
       next({err: err});
     } else{
@@ -40,19 +36,15 @@ paletteController.getOne = (req, res, next) => {
   next()
 }
 
-/* 
-  TODO:  paletteController.create  to create a new palette
-*/
+/**
+ * POST new palette to database
+ * @returns success/error
+ */
 paletteController.create = (req, res, next) => {
-  console.log(`paletteController.create invoked`);
-  console.log(req.body);
-  // const newPalette = JSON.parse(req.body.palette);
-  console.log('newPalette', req.body);
+  
   const palette = new Palette(req.body);
-  console.log('palette', palette);
   palette.save()
     .then(data => {
-      console.log(`data = ${data}`);
       res.locals = data;
       next();
     })
@@ -61,6 +53,5 @@ paletteController.create = (req, res, next) => {
       next({err: err});
     });
 }
-
 
 module.exports = paletteController;

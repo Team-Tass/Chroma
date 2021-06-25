@@ -1,0 +1,93 @@
+{
+  "info": {
+    "name": "New Collection",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "/api/palette/all",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:{{port}}/api/palette/all",
+          "host": [
+            "localhost"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "palette",
+            "all"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/api/palette/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "localhost:{{port}}/api/palette/:id",
+          "host": [
+            "localhost"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "palette",
+            ":id"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/api/palette",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "localhost:{{port}}/api/palette",
+          "host": [
+            "localhost"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "palette"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "port",
+      "value": 8080
+    }
+  ]
+}

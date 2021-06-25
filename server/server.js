@@ -1,4 +1,3 @@
-// server.js
 const dotenv = require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -8,24 +7,34 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-/* Production build page serve */
+/** 
+ * Production build page serve 
+ */
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
   app.get('/', (req, res) => res.status(200)
     .sendFile(path.join(__dirname, '../index.html')));
 }
 
-/* Parsing and Encoding */
+/**
+ * Parsing and encoding
+ */
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-/* Routes */
+/** 
+ * express.Router() module
+ */
 app.use('/api', apiRouter);
 
-/* 404 Handler */
+/** 
+ * 404 handler
+ */
 app.use((req, res) => res.status(404).send(`404 - We could not find that resource.`));
 
-/* Global Error Handler */
+/** 
+ * Global Error Handler
+ */
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',
@@ -37,6 +46,9 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
+/**
+ * Establish server connection
+ */
 app.listen(port, () => {
-  console.log('listening on 3000');
+  console.log(`Listening on ${port}`);
 });
